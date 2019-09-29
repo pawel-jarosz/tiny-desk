@@ -2,7 +2,7 @@ function td_show()
 {
     echo "Available workspaces:"
 
-    ls "$TINY_DESK_WORKSPACES/workspace*.sh" | tr '.' ' ' | tr '/' ' ' | awk '{print $(NF - 1)}' | sed 's/workspace_/  -> /g'
+    ls "$TINY_DESK_WORKSPACES"/workspace*.sh | tr '.' ' ' | tr '/' ' ' | awk '{print $(NF - 1)}' | sed 's/workspace_/  -> /g'
 }
 
 function td_activate()
@@ -36,7 +36,7 @@ function td_deactivate()
 
 function td_update()
 {
-    source "$TINY_DESK_INSTALL_DIR/tiny-desk.sh"
+    source "$TINY_DESK_INSTALL_DIR/tiny_desk.sh"
 }
 
 function td_home()
@@ -51,7 +51,7 @@ function td_cd()
 {
     td_deactivate
     cd $1
-    files=$TINY_DESK_WORKSPACES/desks/workspace*.sh
+    files=$TINY_DESK_WORKSPACES/workspace*.sh
     for f in $files
     do
         valid_path="$( cat "$f" | grep "'$PWD'" | grep 'export S=' | wc -l )"
