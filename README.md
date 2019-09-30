@@ -106,9 +106,10 @@ function @@clean()
 function reset_environment()
 {
     unset CRYPTO_LIB
-    unset -f do_configure
-    unset -f do_build
-    unset -f do_test
+    unset -f @@config
+    unset -f @@build
+    unset -f @@test
+    unset -f @@clean
 }
 ```
 
