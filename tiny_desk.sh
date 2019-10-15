@@ -34,6 +34,18 @@ function td_deactivate()
     
 }
 
+function td_create()
+{
+    workspace_name="$1"
+    workspace_config="$TINY_DESK_WORKSPACES/workspace_$workspace_name.sh"
+
+    touch "$TINY_DESK_WORKSPACES/$(echo $workspace_name)_specific.sh"
+    echo "export WORKSPACE_NAME=\"$workspace_name\"" > $workspace_config
+    echo "export S=\"$PWD\"" >> $workspace_config
+    cat $TINY_DESK_INSTALL_DIR/template.sh >> $workspace_config
+    echo "source $TINY_DESK_WORKSPACES/$(echo $workspace_name)_specific.sh" >> $workspace_config
+}
+
 function td_update()
 {
     source "$TINY_DESK_INSTALL_DIR/tiny_desk.sh"
